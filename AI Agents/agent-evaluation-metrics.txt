@@ -1,0 +1,31 @@
+1. Agentic Workflow & Loop Metrics
+
+These measure how efficiently the agent thinks and acts.
+
+- **Trajectory Efficiency:** The number of steps/loops the agent takes to finish a task. If it takes 20 loops to solve a 3-step problem, it is "spinning its wheels."
+- **Tool Call Accuracy:** Measures if the agent selects the correct tool at the correct time, and formats the tool arguments correctly.
+- **Loop-Break Rate:** How often the agent gets stuck in an infinite loop (e.g., repeatedly calling the same broken tool) and requires a hard timeout.
+- **Human Escalation / Fallback Rate:** The percentage of times the agent gives up and hands the task over to a human operator.
+
+2. Output Quality & Alignment Metrics
+These measure whether the agent's final answer or action is accurate and safe.
+
+- **Groundedness (Faithfulness):** Checking if the agent's response is strictly based on the source data provided, or if it hallucinated facts.
+- **Answer Relevance:** Does the agent actually address the user's core request, or did it wander off-topic during its multi-step loop?
+- **Guardrail Violations:** How successfully the agent blocks toxic inputs, stays within its role, and avoids leaking system prompts or private API data.
+
+3. Engineering & Cost Metrics
+These measure the production efficiency and financial viability of the agent.
+
+- **Token Cost per Task:** Agents are expensive because they call LLMs repeatedly in a loop. You must track the average financial cost (in fractions of a cent) to complete a single user goal.
+- **End-to-End Latency:** The total time elapsed from the user's initial input to the agent's final action.
+- **Token Efficiency:** The ratio of useful output tokens to total consumed input tokens (agents pass their history back and forth, consuming massive input tokens).
+
+
+How They Actually Do It (The Methods)
+
+Companies use a combination of three methods to automate this measurement:
+
+1. **LLM-as-a-Judge (Automated Evaluation):** You use a more powerful model (like GPT-4o or Claude 3.5 Sonnet) to read the agent's execution logs. The "Judge" model evaluates the agent's behavior against a rubric (e.g., "Rate the helpfulness from 1 to 5").
+2. **Golden Datasets (Regression Testing):** Before deploying an update, you run the agent against a curated list of 100+ hard historical test cases where the correct answer is already known. You check if the update broke any previously working features.
+3. **Open-Source Tracing Frameworks:** Developers integrate tools like **LangSmith**, **Arize Phoenix**, or **OpenLLMetry** into their code. These tools visually trace the agent's execution path so you can see exactly which line of code or tool call caused the agent to fail.

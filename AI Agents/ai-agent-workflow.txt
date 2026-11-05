@@ -1,0 +1,67 @@
+QUESTION
+How does an AI agent work?
+
+ANSWER
+An AI agent follows a repeating workflow to complete a task. It receives a goal, understands the request, creates a plan, uses the right tools, checks the results, and corrects its actions when necessary.
+
+WORKFLOW
+
+1. Receive the goal
+   The user gives the agent a task or objective.
+
+2. Understand the request
+   The agent analyzes the instructions, available context, and expected result.
+
+3. Create a plan
+   The agent breaks the task into smaller steps and decides what needs to be done first.
+
+4. Choose and use tools
+   The agent may search the web, read files, write code, call APIs, or use other tools.
+
+5. Observe the result
+   The agent checks what happened after each action and collects new information.
+
+6. Evaluate and correct
+   If the result is incomplete or incorrect, the agent changes its plan and tries again.
+
+7. Finish the task
+   When the goal is complete, the agent provides the final result to the user.
+
+DIAGRAM
+
+  +----------------+
+  |  User's Goal   |
+  +--------+-------+
+           |
+           v
+  +----------------+
+  | Understand Task|
+  +--------+-------+
+           |
+           v
+  +----------------+
+  |  Create Plan   |
+  +--------+-------+
+           |
+           v
+  +----------------+
+  | Use Tools      |
+  +--------+-------+
+           |
+           v
+  +----------------+
+  | Observe Result |
+  +--------+-------+
+           |
+           v
+  +----------------+
+  | Is it correct? |
+  +---+--------+---+
+      |        |
+     Yes       No
+      |        |
+      v        +---------> Adjust Plan
+  +---------+             |
+  | Complete|<------------+
+  | Task    |
+  +---------+
