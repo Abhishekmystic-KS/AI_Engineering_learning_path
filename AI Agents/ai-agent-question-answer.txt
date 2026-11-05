@@ -1,0 +1,11 @@
+QUESTION
+What is an AI agent?
+
+ANSWER
+An AI agent is an intelligent software program designed to achieve goals completely on its own.
+
+Unlike standard chatbots that only answer prompts with text, an agent acts like an autonomous digital worker. It can analyze a complex problem, break it down into smaller steps, and dynamically make decisions as it works.
+
+Crucially, it can use external tools, such as searching the web, writing code, or calling APIs, to execute tasks.
+
+Ultimately, it is a self-correcting system that works continuously until your requested job is completely finished.
