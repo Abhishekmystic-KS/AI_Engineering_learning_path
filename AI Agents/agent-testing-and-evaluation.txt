@@ -1,0 +1,50 @@
+In an AI agent architecture, **Testing and Evaluation (Eval) is the process of quantitatively measuring whether your agent is reliable, accurate, and safe.**
+Because agents are autonomous and non-deterministic (they can take different paths to solve the same problem), you cannot use traditional software unit tests. Instead, evaluation requires running agents against sets of test cases and using software frameworks to score their performance.
+
+---
+
+The Three Phases of Agent Evaluation
+A complete evaluation pipeline is split into three developmental gates:
+
+```
+ ┌──────────────────────┐      ┌──────────────────────┐      ┌──────────────────────┐
+ │   1. UNIT TESTING    │ ───► │  2. OFFLINE EVALS    │ ───► │  3. ONLINE MONITOR   │
+ │ (Tool & Prompt Check)│      │  (Golden Dataset)    │      │  (Production Traces) │
+ └──────────────────────┘      └──────────────────────┘      └──────────────────────┘
+```
+
+1. Unit Testing (Deterministic Verification)
+Before testing the agent's autonomy, you test its code foundations.
+
+- **Tool Validation:** Mocking API responses to ensure the functions your agent calls don't crash when receiving unusual data types.
+- **Format Parsing:** Verifying that your output parser can successfully extract JSON commands from the LLM’s raw text responses without throwing formatting errors.
+
+2. Offline Evals (The Golden Dataset)
+This is where you test the agent's actual intelligence before releasing it to production.
+
+- **The Golden Dataset:** A curated test suite of 50 to 100 diverse customer scenarios or tasks where the ideal outcome or correct answer is already known.
+- **Running the Test:** Every time you update the agent's system prompt or switch models, you rerun the entire dataset through the agent to see if its overall success rate improved or regressed.
+
+3. Online Evaluation (Production Monitoring)
+Once the agent is live, you continuously analyze real-world interactions.
+
+- **Telemetry Scoring:** Using background tools to evaluate production logs for hidden anomalies like infinite loop traps or prompt injection attempts.
+- **User Feedback Loops:** Explicitly logging instances where users hit a "thumbs down" button or manual human escalations occur to flag those traces for immediate review.
+
+---
+
+The Core Evaluation Methods
+How do you actually score whether an agent's multi-step execution path was successful? Engineers use three primary scoring methodologies:
+
+- **Code-Based Rules:** Best for simple metrics. For example, did the agent successfully generate a file named `report.csv`? Did the final code run without throwing a syntax error?
+- **LLM-as-a-Judge:** You pass the agent's entire execution trace (Thoughts + Actions + Observations) to a distinct, highly capable model (like GPT-4o or Claude 3.5 Sonnet) along with an evaluation rubric. The Judge model scores specific criteria from 1-5, such as **Helpfulness**, **Relevance**, and **Groundedness**.
+- **Human-in-the-Loop Review:** Curating flagged or low-scoring traces into a dashboard where human annotators review the agent's choices to provide definitive correction alignment.
+
+---
+
+Specialized Frameworks for Agent Evals
+To build an evaluation suite for your project, integrate these industry-standard tools:
+
+- **Promptfoo:** A popular CLI tool that lets you define assertions in YAML (e.g., *assert output contains valid JSON, assert execution took fewer than 5 loops*) and run massive parallel evaluations.
+- **DeepEval:** An open-source, unit-testing framework for LLM applications that provides ready-to-use mathematical formulations for scoring metrics like hallucination rates and tool alignment.
+- **Ragas:** An evaluation library specialized in parsing Retrieval-Augmented Generation (RAG) contexts to score how well an agent utilizes its memory documents.
