@@ -1,0 +1,48 @@
+A **Multi-Agent System (MAS) is a network of multiple, specialized AI agents working together to solve complex problems that are too large or intricate for a single agent to handle.**
+Instead of building one massive, generic agent to handle everything, you build a team of micro-agents—each with its own specific persona, prompt instructions, and tool access—that communicate, collaborate, and pass tasks to one another.
+
+---
+
+The Structural Architecture of a Multi-Agent System
+
+```
+                  ┌──────────────────────────────┐
+                  │      User Input / Goal       │
+                  └──────────────┬───────────────┘
+                                 │
+                                 ▼
+                  ┌──────────────────────────────┐
+                  │    ORCHESTRATOR / MANAGER    │
+                  └──────┬───────────────┬───────┘
+                         │               │
+        ┌────────────────┘               └────────────────┐
+        ▼                                                 ▼
+┌───────────────┐                                 ┌───────────────┐
+│  AGENT A      │ ◄───────── Communicate ────────► │  AGENT B      │
+│  (Researcher) │           & Share Data          │  (Copywriter) │
+├───────────────┤                                 ├───────────────┤
+│ Tools: Search │                                 │ Tools: Writer │
+└───────────────┘                                 └───────────────┘
+```
+
+---
+
+Core Communication & Coordination Topologies
+How agents interact determines the system's architecture. There are three standard patterns:
+
+- **1. Orchestrator-Worker (Hierarchical):** A central "Manager" agent receives the user's high-level goal, breaks it down, assigns specific sub-tasks to specialized "Worker" agents, reviews their outputs, and requests revisions if necessary.
+- **2. Choreography (Sequential / Pipeline):** Agents pass tasks down a straight line. For example, Agent 1 (Data Scraper) finishes its job and hands the raw text to Agent 2 (Data Cleaner), who then hands the clean data to Agent 3 (Report Writer).
+- **3. Peer-to-Peer (Collaborative Network):** Agents operate horizontally in a shared chat channel or blackboard system. They dynamically call upon each other, ask questions, and share information autonomously without a central boss.
+
+Why Multi-Agent Systems Beat Single Agents
+
+- **Role Specialization:** An LLM performs significantly better when given a narrow, hyper-focused prompt (e.g., *"You are a senior code reviewer"*) rather than a generic prompt trying to cover 10 different tasks.
+- **Reduced Context Drift:** Because each agent handles only its small piece of the puzzle, their short-term memory windows stay clean and compact, reducing costs and hallucinations.
+- **Separation of Tools:** You don't need to hand 50 different API tools to one agent (which confuses the model). You can give 3 specific tools to the Researcher and 2 completely different tools to the Accountant.
+
+Frameworks for Building Multi-Agent Systems
+If you want to build a multi-agent system, the industry standard open-source frameworks are:
+
+- **CrewAI:** Highly intuitive for setting up role-playing, production-oriented hierarchical teams.
+- **AutoGen (by Microsoft):** Powerful framework optimized for conversational, event-driven multi-agent networks.
+- **LangGraph:** The gold standard for building custom, highly controllable cyclic graphs where you explicitly define how state and data flow between agents.

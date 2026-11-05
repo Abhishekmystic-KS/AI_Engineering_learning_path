@@ -1,0 +1,58 @@
+In an AI agent architecture, **Prompting and Planning** act as the agent’s central nervous system. If the LLM is the brain, the **prompt** sets its identity and constraints, while the **planning mechanism** dictates how it breaks down a massive goal into executable steps.
+
+---
+
+1. The Prompt: Defining the Agent's Core Identity
+An agent prompt is completely different from a standard ChatGPT chat prompt. It doesn't just ask a question; it constructs a system architecture using a specific structure:
+
+- **Role & Persona:** Defines who the agent is (e.g., *"You are an expert security engineer..."*).
+- **Available Tools:** A strict list of tools the agent can use, complete with clear JSON schemas explaining what parameters they accept.
+- **Execution Format (The Loop Protocol):** Instructions forcing the agent to think before it acts.
+- **Guardrails & Constraints:** Boundaries to prevent loops, hallucinations, or security leaks (e.g., *"Never output raw SQL code. Only use the provided database tool."*).
+
+Example of an Agent System Prompt:
+
+text
+
+```
+You are an Autonomous Data Analyst Agent. Your goal is to answer user data queries.
+
+You have access to the following tools:
+- sql_query(query_string): Runs a database query.
+- web_search(query): Searches the web for information.
+
+You must strictly follow this loop format for every step:
+THOUGHT: Reason about what you need to do next.
+ACTION: Call one of the allowed tools in valid JSON format.
+OBSERVATION: Read the tool's output.
+
+When you have the final answer, output:
+FINAL ANSWER: [Your conclusion]
+```
+
+Use code with caution.
+
+---
+
+2. Planning Mechanisms: How Agents Think
+Agents cannot solve complex, multi-step problems all at once. They rely on specific **planning paradigms** built into their system prompts to reason through problems chronologically:
+
+A. ReAct (Reason + Act)
+The foundational agent planning pattern. For every single action, the agent must output a **Thought** explaining its reasoning *before* it can output the **Action** (the tool call). This prevents the agent from making random, erratic tool selections.
+
+B. Plan-and-Solve (Ahead-of-Time Planning)
+Instead of deciding step-by-step on the fly, the agent looks at the user goal, maps out a complete, multi-step itinerary first (e.g., *Step 1: Scrape, Step 2: Clean, Step 3: Analyze*), and then systematically executes each step.
+
+C. Tree of Thoughts (ToT) / Reasoning Traces
+For advanced reasoning, the agent explores multiple different solution paths simultaneously (like a tree branch). It evaluates the potential success of each path, backs out of dead ends, and chooses the most optimal path forward.
+
+D. Self-Reflection & Critique
+After an action is performed, a sub-prompt asks the agent to evaluate its own work: *"Look at the observation you just received. Does this actually answer the user's question? Did you make a mistake?"* If it detects an error, it replans its next steps.
+
+
+How Prompting & Planning Fail (And What to Measure)
+When you evaluate your agent (tying back to your monitoring goal), these are the specific planning failures you track:
+
+- **Context Drift:** The agent forgets its original goal after 5 or 6 loops because the planning history gets too long.
+- **Hallucinated Actions:** The agent attempts to call a tool or pass an argument that doesn't actually exist in its prompt instructions.
+- **Infinite Reasoning Loops:** The agent outputs `THOUGHT -> ACTION -> OBSERVATION` over and over again without ever deciding to output a `FINAL ANSWER`.

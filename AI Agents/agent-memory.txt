@@ -1,0 +1,49 @@
+In an AI agent architecture, **Memory** is what prevents the agent from developing amnesia. Without a structured memory component, an LLM treats every single tool call or user interaction as a completely isolated event, making autonomous, multi-step progress impossible.
+Agent memory is structured into three distinct layers, each serving a unique functional purpose within the system:
+
+```
+┌────────────────────────────────────────────────────────┐
+│                     AGENT MEMORY                       │
+├────────────────────────────────────────────────────────┤
+│ 1. SHORT-TERM MEMORY (The Context Window)              │
+│    • In-flight variables, raw logs, active chat thread │
+├────────────────────────────────────────────────────────┤
+│ 2. LONG-TERM MEMORY (Vector Databases / RAG)          │
+│    • Past interactions, historic facts, user preferences│
+├────────────────────────────────────────────────────────┤
+│ 3. EPISODIC MEMORY (Procedural Memory)                 │
+│    • Past trial-and-error logs, "lessons learned"      │
+└────────────────────────────────────────────────────────┘
+```
+
+---
+
+1. Short-Term Memory (Context / State)
+This is the immediate working memory of the agent, living inside the LLM's **context window**.
+
+- **What it stores:** The exact sequence of the current execution run (e.g., `Thought 1 -> Action 1 -> Observation 1 -> Thought 2`).
+- **How it works:** It uses an in-memory state graph or buffer. Every time a tool returns data, that output is appended to the prompt history so the agent knows what it just accomplished.
+- **The Challenge:** Context windows are finite and expensive. If an agent takes 30 steps to solve a problem, the input prompt becomes massive, causing **context drift** or high token costs.
+
+2. Long-Term Memory (Semantic Memory)
+This allows the agent to retain knowledge across different sessions, days, or weeks.
+
+- **What it stores:** Corporate knowledge bases, user profile preferences, and historical project documents.
+- **How it works:** Text is converted into mathematical vectors (embeddings) and saved in an external **Vector Database** (like Pinecone, Milvus, Chroma, or pgvector).
+- **The Retrieval Mechanism:** When a user asks a question, the agent performs a similarity search to fetch relevant historical facts from the database and inserts them into its active prompt context.
+
+3. Episodic Memory (Procedural / Reflective Memory)
+This is the most advanced layer, focusing on **how** to do things better based on past experiences.
+
+- **What it stores:** Traces of past tasks, including failures, errors, and successful execution paths.
+- **How it works (Self-Reflection):** When an agent successfully completes a difficult task, a background process summarizes the execution path (e.g., *"When trying to scrape Website X, the API failed, but switching to the headless browser tool worked"*).
+- **Why it matters:** The next time the agent encounters a similar problem, it queries its episodic memory to avoid repeating past mistakes.
+
+---
+
+Technical Tools Used to Implement Agent Memory
+When building these systems, developers rely on specific database architectures:
+
+- **Graph Databases (e.g., Neo4j):** Perfect for tracking deep relationships between entities, people, and events the agent encounters.
+- **Vector Databases (e.g., Pinecone, Qdrant):** Used for lightning-fast mathematical similarity matching of unstructured text.
+- **Key-Value Stores (e.g., Redis):** Ideal for instantly retrieving short-term session states, active user IDs, and chat histories.
