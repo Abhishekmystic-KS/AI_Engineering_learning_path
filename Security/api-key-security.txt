@@ -1,0 +1,49 @@
+API KEY SECURITY
+
+HOW TO PROTECT API KEYS
+
+- Keep keys in environment variables or a secret manager.
+- Use different keys for development, testing, and production.
+- Give each key the smallest permissions it needs.
+- Set spending limits and expiration dates when available.
+- Rotate keys regularly and after team membership changes.
+- Monitor usage, locations, requests, and unexpected spending.
+- Never place keys in source code, Git commits, chat messages, screenshots, or public notebooks.
+- Never print keys in logs or error messages.
+
+SAFE APPLICATION FLOW
+
+  Secret Manager or local .env
+              |
+              v
+        Application reads key
+              |
+              v
+        API request is made
+              |
+              v
+        Key is never shown to users
+
+FRONTEND WARNING
+
+Never put a private API key in browser code, mobile code, or a public frontend. Users can inspect it. Use a backend API that keeps the key on the server.
+
+IF A KEY IS EXPOSED
+
+1. Revoke or disable the key immediately.
+2. Create a replacement key.
+3. Update the secret manager or local environment.
+4. Check logs and billing for unauthorized use.
+5. Remove the exposed value from files and history.
+6. Tell the team and record what happened.
+
+SAFE SEARCH COMMANDS
+
+`git status`
+Checks whether unexpected files are present.
+
+`git diff --cached`
+Reviews files staged for the next commit.
+
+`git grep -n -i "api_key\|password\|secret\|token"`
+Finds suspicious variable names in tracked files. Review results manually because it can find safe examples too.

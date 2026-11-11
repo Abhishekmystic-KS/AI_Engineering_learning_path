@@ -1,0 +1,38 @@
+SECURITY CHECKLIST
+
+BEFORE COMMITTING
+
+- [ ] `.env` is listed in `.gitignore`.
+- [ ] No API keys or passwords are in the changed files.
+- [ ] `git diff --cached` was reviewed.
+- [ ] `.env.example` contains placeholders only.
+- [ ] Logs and notebooks do not contain private values.
+
+BEFORE PUSHING
+
+- [ ] The branch contains only the intended changes.
+- [ ] Tests pass.
+- [ ] Secret scanning passes.
+- [ ] The change does not weaken authentication or permissions.
+- [ ] No production database or service is being changed accidentally.
+
+BEFORE DEPLOYING
+
+- [ ] Production secrets are in a secret manager.
+- [ ] Development and production keys are different.
+- [ ] Access permissions use least privilege.
+- [ ] Rate limits and spending limits are enabled.
+- [ ] Logs mask sensitive values.
+- [ ] A rollback plan exists.
+
+AFTER DEPLOYING
+
+- [ ] Health checks respond correctly.
+- [ ] Error and access logs are monitored.
+- [ ] API usage and cost are normal.
+- [ ] Secret access is audited.
+- [ ] Alerts are configured for unusual activity.
+
+IF YOU ARE UNSURE
+
+Stop before pushing or deploying. Ask a teammate to review the change. It is cheaper to delay a commit than to recover an exposed production key.

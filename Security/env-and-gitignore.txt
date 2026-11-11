@@ -1,0 +1,54 @@
+ENV FILES AND GITIGNORE
+
+WHAT IS A .env FILE?
+
+A `.env` file stores private configuration values used by an application on a local machine.
+
+Example structure only:
+
+API_KEY=your-secret-value
+DATABASE_URL=your-private-database-url
+
+Never place real values in documentation, screenshots, examples, or public repositories.
+
+WHAT IS .gitignore?
+
+A `.gitignore` file tells Git which files should not be tracked or uploaded.
+
+Useful entries:
+
+.env
+.env.*
+!.env.example
+__pycache__/
+.venv/
+*.pem
+*.key
+
+WHAT IS .env.example?
+
+`.env.example` is a safe template that shows required variable names without real values.
+
+Example:
+
+API_KEY=
+DATABASE_URL=
+
+TEAM WORKFLOW
+
+1. Keep real values in local `.env` files.
+2. Add `.env` to `.gitignore` before creating a commit.
+3. Commit `.env.example` with empty values or safe placeholders.
+4. Tell teammates which variables they need.
+5. Store production values in a secret manager, not in Git.
+
+CHECK BEFORE COMMITTING
+
+- Run `git status`.
+- Run `git diff --cached` after staging.
+- Check that `.env` is not listed as a staged file.
+- Search for key names or suspicious secret-looking values.
+
+IMPORTANT
+
+`.gitignore` only prevents future tracking. If a secret was already committed, rotate the secret and remove it from Git history using a careful team-approved process.

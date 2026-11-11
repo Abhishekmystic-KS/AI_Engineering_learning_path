@@ -1,0 +1,26 @@
+SECURITY FILES TO REMEMBER
+
+| File or Tool | Why We Need It |
+|---|---|
+| `.env` | Local private configuration. Never commit it. |
+| `.env.example` | Safe list of required variable names for teammates. |
+| `.gitignore` | Prevents private and unnecessary files from being tracked. |
+| Secret manager | Stores and delivers production secrets securely. |
+| `requirements.txt` or `pyproject.toml` | Records dependencies so environments are repeatable. |
+| `Dockerfile` | Defines how the application is packaged without embedding secrets. |
+| CI/CD secret settings | Stores secrets used by automated tests and deployments. |
+| Pre-commit configuration | Runs checks before a commit is created. |
+| Security policy | Explains how the team reports and handles exposed secrets. |
+| Backup and recovery plan | Helps restore services without copying secrets into unsafe locations. |
+
+FILES THAT SHOULD NOT CONTAIN REAL SECRETS
+
+- Python, JavaScript, or other source files
+- README files and documentation
+- Jupyter notebooks
+- Dockerfiles and Docker images
+- GitHub issues and pull requests
+- Chat messages and screenshots
+- Test fixtures and sample data
+- Frontend or mobile application code
+- Log files
