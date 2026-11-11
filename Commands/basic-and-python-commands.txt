@@ -1,0 +1,32 @@
+BASIC TERMINAL AND PYTHON COMMANDS
+
+| Command | Why and when we use it |
+|---|---|
+| `pwd` | Shows the current folder so you know where you are. |
+| `ls` | Lists files and folders in the current location. |
+| `cd folder-name` | Moves into another folder. |
+| `cd ..` | Moves up one folder. |
+| `mkdir folder-name` | Creates a new folder. |
+| `clear` | Cleans the terminal screen without changing files. |
+| `command --help` | Shows the available options for a command. |
+| `python --version` | Checks which Python version is installed. |
+| `python -m venv .venv` | Creates an isolated Python environment for a project. |
+| `source .venv/bin/activate` | Activates the environment on Linux or macOS. |
+| `deactivate` | Leaves the active virtual environment. |
+| `python -m pip install package` | Installs a Python package into the active environment. |
+| `python -m pip install -r requirements.txt` | Installs all project dependencies. |
+| `python -m pip freeze` | Shows installed packages and versions. |
+| `python app.py` | Runs a Python file. |
+| `pytest` | Runs automated Python tests. |
+
+BASIC DAILY ORDER
+
+1. Open the project folder.
+2. Activate `.venv`.
+3. Install dependencies if needed.
+4. Run the application or tests.
+5. Deactivate the environment when finished.
+
+IMPORTANT
+
+Use `python -m pip` instead of only `pip` when possible. It makes sure pip belongs to the Python environment you are currently using.

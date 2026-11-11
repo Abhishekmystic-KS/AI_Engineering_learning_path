@@ -1,0 +1,124 @@
+COMMON COMMAND FAILURES AND FIXES
+
+1. `command not found`
+
+Meaning:
+The command is not installed or is not available in PATH.
+
+Try:
+- Check the spelling.
+- Run `command --help` or `which command`.
+- Install the required tool.
+- Restart the terminal after installation.
+
+2. `No such file or directory`
+
+Meaning:
+The path or filename is wrong, or you are in the wrong folder.
+
+Try:
+- Run `pwd`.
+- Run `ls`.
+- Use the correct relative or absolute path.
+
+3. `Permission denied`
+
+Meaning:
+Your user does not have permission, or a script is not executable.
+
+Try:
+- Check file permissions.
+- Run the command from the correct user account.
+- For a script, use `bash script.sh` or add execute permission only when appropriate.
+- Do not use administrator access as a first solution.
+
+4. `ModuleNotFoundError: No module named ...`
+
+Meaning:
+The package is not installed in the active Python environment.
+
+Try:
+- Activate `.venv`.
+- Run `python -m pip install package-name`.
+- Check that the package name is in `requirements.txt`.
+
+5. `Port is already in use`
+
+Meaning:
+Another process is already using the required port.
+
+Try:
+- Stop the old application or container.
+- Use another port, such as `-p 8001:8000`.
+- Check running containers with `docker ps`.
+
+6. `Your branch is behind origin/main`
+
+Meaning:
+Someone pushed newer commits to the remote branch.
+
+Try:
+- Save or commit your work.
+- Run `git pull --rebase origin main`.
+- Resolve conflicts carefully.
+- Run tests before pushing again.
+
+7. `Merge conflict`
+
+Meaning:
+Two changes affect the same lines or files.
+
+Try:
+- Open the marked files.
+- Decide which code should remain.
+- Remove conflict markers: `<<<<<<<`, `=======`, and `>>>>>>>`.
+- Run tests.
+- Stage the resolved file and continue the rebase or merge.
+
+8. `rejected - non-fast-forward`
+
+Meaning:
+The remote branch has commits that your local branch does not have.
+
+Try:
+- Run `git pull --rebase`.
+- Resolve conflicts if needed.
+- Run tests.
+- Push again.
+- Avoid force-pushing shared branches.
+
+9. Docker container exits immediately
+
+Meaning:
+The application inside the container stopped or crashed.
+
+Try:
+- Run `docker ps -a`.
+- Read `docker logs container-name`.
+- Check the Docker command, environment variables, and application port.
+
+10. API returns `500 Internal Server Error`
+
+Meaning:
+The server failed while processing the request.
+
+Try:
+- Read the server logs.
+- Reproduce the request locally.
+- Check environment variables and database access.
+- Add or inspect the request ID for tracing.
+
+11. API request times out
+
+Meaning:
+The service or an external dependency took too long.
+
+Try:
+- Check logs and traces.
+- Check model, database, or queue latency.
+- Add a timeout and retry policy.
+- Move long-running work to a background worker.
+
+SAFETY RULE
+
+Never hide an error by repeatedly retrying without a limit. Find the cause, record the error, and use a controlled retry or rollback.

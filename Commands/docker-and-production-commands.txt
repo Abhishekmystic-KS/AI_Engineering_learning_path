@@ -1,0 +1,37 @@
+DOCKER AND PRODUCTION COMMANDS
+
+| Command | Why and when we use it |
+|---|---|
+| `docker --version` | Checks whether Docker is installed. |
+| `docker build -t app-name .` | Builds an image from the project Dockerfile. |
+| `docker images` | Lists images stored locally. |
+| `docker run --env-file .env -p 8000:8000 app-name` | Runs a container and maps its port. Never commit `.env`. |
+| `docker ps` | Shows running containers. |
+| `docker ps -a` | Shows running and stopped containers. |
+| `docker logs container-name` | Reads application output and errors from a container. |
+| `docker stop container-name` | Stops a running container gracefully. |
+| `docker compose up --build` | Builds and starts services defined in compose.yaml. |
+| `docker compose up -d` | Starts services in the background. |
+| `docker compose logs -f` | Follows live logs while debugging a service. |
+| `docker compose down` | Stops the local Compose services. |
+| `curl http://localhost:8000/health` | Checks whether a local API health endpoint responds. |
+| `curl -X POST http://localhost:8000/predict` | Sends a test request to an API endpoint. |
+
+PRODUCTION HABITS
+
+- Check logs before restarting a service.
+- Use environment variables or a secret manager for API keys.
+- Give services health and readiness endpoints.
+- Use a specific image tag instead of relying only on `latest`.
+- Test the image locally before deploying it.
+- Confirm which environment you are connected to before changing anything.
+- Never run destructive database commands in production without approval and a backup.
+
+BASIC PRODUCTION CHECK
+
+1. Is the service running?
+2. Is the health endpoint responding?
+3. Are error logs increasing?
+4. Is the database or queue reachable?
+5. Are latency and resource usage normal?
+6. Can the previous version be restored?

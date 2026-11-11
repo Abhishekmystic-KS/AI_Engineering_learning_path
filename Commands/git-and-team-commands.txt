@@ -1,0 +1,41 @@
+GIT AND TEAM COMMANDS
+
+| Command | Why and when we use it |
+|---|---|
+| `git status` | Checks changed files, current branch, and whether work is clean. Use it first. |
+| `git branch` | Shows local branches and the current branch. |
+| `git switch -c feature-name` | Creates and moves to a new feature branch. Use one branch per task. |
+| `git switch main` | Moves back to the main branch. |
+| `git pull --rebase origin main` | Gets the newest main changes before starting or updating work. |
+| `git diff` | Shows changes that are not committed yet. Review before staging. |
+| `git add file.txt` | Selects a file for the next commit. |
+| `git add .` | Stages all current changes. Review `git status` before committing. |
+| `git commit -m "Describe the change"` | Saves a clear local checkpoint. |
+| `git log --oneline` | Shows a short history of commits. |
+| `git push -u origin feature-name` | Uploads a new branch to GitHub. |
+| `git push` | Uploads later commits to the branch already connected to GitHub. |
+| `git fetch origin` | Checks for remote updates without changing your files. |
+| `git restore --staged file.txt` | Removes a file from staging without deleting its changes. |
+
+TEAM WORKFLOW
+
+1. `git pull --rebase origin main`
+2. `git switch -c feature-name`
+3. Make and test your changes.
+4. `git status` and `git diff`
+5. `git add` the required files.
+6. `git commit -m "Clear description"`
+7. `git push -u origin feature-name`
+8. Open a pull request for review.
+9. Update the branch if reviewers request changes.
+10. Merge through the team's agreed process.
+
+GOOD COMMIT EXAMPLES
+
+- `Add RAG retrieval notes`
+- `Fix agent timeout handling`
+- `Add tests for document chunking`
+
+TEAM RULE
+
+Do not work directly on `main` when a team uses pull requests. Use a feature branch so your changes can be reviewed safely.
