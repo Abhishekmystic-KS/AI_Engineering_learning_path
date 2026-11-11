@@ -1,0 +1,13 @@
+MACHINE LEARNING AND DEEP LEARNING FRAMEWORKS
+
+| Framework / Tool | Where We Use It |
+|---|---|
+| Scikit-learn | Classical ML, preprocessing, classification, regression, and clustering |
+| XGBoost | High-performance models for structured and tabular data |
+| LightGBM | Fast gradient-boosting models for large datasets |
+| CatBoost | Gradient boosting with strong support for categorical data |
+| PyTorch | Neural networks, custom training loops, research, and production models |
+| TensorFlow | Neural networks and existing enterprise ML systems |
+| Keras | Simple deep-learning model development with TensorFlow |
+| TorchVision | Computer vision datasets, models, and image transformations |
+| Hugging Face Transformers | Pretrained NLP, vision, and multimodal models |

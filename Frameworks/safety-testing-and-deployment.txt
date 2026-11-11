@@ -1,0 +1,25 @@
+SAFETY, TESTING, AND DEPLOYMENT FRAMEWORKS
+
+| Framework / Tool | Where We Use It |
+|---|---|
+| Guardrails AI | Validating structured model outputs and enforcing application rules |
+| NeMo Guardrails | Controlling conversations and applying safety policies |
+| Llama Guard | Classifying unsafe inputs and outputs |
+| Pytest | Unit tests, integration tests, API tests, and tool tests |
+| Postman | Testing API endpoints, authentication, and service behavior |
+| HTTPX | Automated HTTP testing and Python API clients |
+| Docker | Packaging applications, models, dependencies, and workers |
+| Kubernetes | Scaling, networking, and managing production containers |
+| AWS | Hosting APIs, databases, model services, storage, and workers |
+| Microsoft Azure | Enterprise cloud hosting and AI services |
+| Google Cloud | Cloud Run, storage, databases, and AI services |
+| AWS Lambda | Short-running, event-driven serverless AI services |
+| Google Cloud Run | Container-based serverless deployment |
+| Vercel Functions | Lightweight web and AI endpoints |
+| Terraform | Reproducibly creating cloud infrastructure |
+| GitHub Actions | Running tests, building images, and deploying changes automatically |
+| GitLab CI | Continuous integration and deployment pipelines |
+| Git | Tracking code, branches, reviews, and releases |
+| GitHub | Collaboration, code hosting, pull requests, and project management |
+| Streamlit | Quickly building data and AI application interfaces |
+| Gradio | Building interactive demos for models and AI applications |

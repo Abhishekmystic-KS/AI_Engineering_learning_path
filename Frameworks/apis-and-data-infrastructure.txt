@@ -1,0 +1,18 @@
+APIS AND DATA INFRASTRUCTURE FRAMEWORKS
+
+| Framework / Tool | Where We Use It |
+|---|---|
+| FastAPI | Serving AI models, agents, and RAG systems as APIs |
+| Flask | Small AI services, prototypes, and lightweight APIs |
+| Pydantic | Validating API requests, tool inputs, model outputs, and configuration |
+| PostgreSQL | Users, application records, tasks, evaluation data, and agent state |
+| MySQL | Relational application data and existing enterprise systems |
+| MongoDB | Flexible JSON documents, logs, and unstructured application data |
+| Redis | Caching, queues, rate limits, sessions, and short-term agent state |
+| SQLAlchemy | Connecting Python services to relational databases |
+| Alembic | Safely changing database schemas across deployments |
+| Apache Kafka | Moving high-volume events between production services |
+| RabbitMQ | Reliable task and message delivery between services |
+| Temporal | Long-running workflows, retries, and background agent tasks |
+| Celery | Running asynchronous model and agent jobs |
+| Redis Queue | Simple background jobs using Redis |

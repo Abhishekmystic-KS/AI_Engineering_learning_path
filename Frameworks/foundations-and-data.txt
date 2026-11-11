@@ -1,0 +1,14 @@
+FOUNDATIONS AND DATA FRAMEWORKS
+
+| Framework / Tool | Where We Use It |
+|---|---|
+| Python | Main language for AI applications, data processing, models, agents, and APIs |
+| NumPy | Numerical computing and array operations |
+| Pandas | Cleaning, transforming, and analyzing datasets |
+| Polars | Fast data processing for large tabular datasets |
+| Matplotlib | Basic charts and data visualization |
+| Seaborn | Statistical charts and data analysis |
+| Plotly | Interactive charts and dashboards |
+| OpenCV | Image processing, video analysis, and computer vision |
+| spaCy | Production natural language processing and named entity recognition |
+| NLTK | Learning and experimenting with language processing techniques |

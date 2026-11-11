@@ -1,0 +1,16 @@
+LLM AND AGENT FRAMEWORKS
+
+| Framework / Tool | Where We Use It |
+|---|---|
+| OpenAI SDK | Connecting applications to OpenAI models and tools |
+| Anthropic SDK | Connecting applications to Claude models |
+| Google Gemini SDK | Connecting applications to Gemini models |
+| Hugging Face Transformers | Loading, fine-tuning, and using open-source LLMs |
+| Ollama | Running and testing LLMs locally |
+| llama.cpp | Efficient local inference for compatible open-source models |
+| vLLM | High-throughput and low-latency LLM serving in production |
+| Text Generation Inference | Serving open-source language models as production endpoints |
+| LangChain | Building LLM chains, tools, retrievers, and agent applications |
+| LangGraph | Stateful, cyclic, controllable agent workflows and long-running tasks |
+| CrewAI | Role-based teams of specialized agents |
+| AutoGen | Conversational and event-driven multi-agent systems |

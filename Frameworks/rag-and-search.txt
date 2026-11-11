@@ -1,0 +1,15 @@
+RAG AND SEARCH FRAMEWORKS
+
+| Framework / Tool | Where We Use It |
+|---|---|
+| LlamaIndex | Connecting LLMs to documents, data sources, and knowledge bases |
+| Haystack | Production search, retrieval, question answering, and RAG pipelines |
+| Sentence Transformers | Creating embeddings with open-source models |
+| OpenAI Embeddings | Creating hosted embeddings for semantic search |
+| Cohere Embed | Creating hosted embeddings for retrieval systems |
+| Chroma | Local and small-scale vector search applications |
+| Qdrant | Production vector search with filtering and similarity retrieval |
+| Pinecone | Managed vector search for cloud RAG applications |
+| Weaviate | Vector search with metadata and hybrid retrieval |
+| Milvus | Large-scale and distributed vector search |
+| pgvector | Storing vectors with application data in PostgreSQL |

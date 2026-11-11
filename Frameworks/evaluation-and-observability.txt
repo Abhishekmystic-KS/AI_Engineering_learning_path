@@ -1,0 +1,16 @@
+EVALUATION AND OBSERVABILITY FRAMEWORKS
+
+| Framework / Tool | Where We Use It |
+|---|---|
+| Promptfoo | Testing prompts, models, assertions, and agent behavior |
+| DeepEval | Measuring hallucination, relevance, faithfulness, and LLM quality |
+| Ragas | Evaluating RAG retrieval, context quality, and generated answers |
+| TruLens | Tracking and scoring LLM application feedback functions |
+| LangSmith | Inspecting LangChain and LangGraph traces, tools, and prompts |
+| Langfuse | Tracking prompts, traces, costs, latency, and production sessions |
+| Arize Phoenix | Open-source tracing and evaluation of LLM and agent workflows |
+| OpenInference | Standard instrumentation for LLM and agent traces |
+| OpenTelemetry | General tracing, metrics, and service instrumentation |
+| Sentry | Capturing application errors and production exceptions |
+| Prometheus | Collecting service and infrastructure metrics |
+| Grafana | Visualizing latency, CPU, memory, throughput, and service health |

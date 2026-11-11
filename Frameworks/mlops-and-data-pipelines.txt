@@ -1,0 +1,12 @@
+MLOPS AND DATA PIPELINE FRAMEWORKS
+
+| Framework / Tool | Where We Use It |
+|---|---|
+| Apache Airflow | Scheduling data ingestion, training, and document indexing workflows |
+| Prefect | Building and monitoring modern data workflows |
+| Ray | Scaling model training, batch inference, and large AI workloads |
+| MLflow | Tracking experiments, metrics, and model versions |
+| Weights & Biases | Tracking training runs, charts, datasets, and model performance |
+| MLflow Model Registry | Managing approved model versions and production promotion |
+| DVC | Versioning large datasets and ML training inputs with Git |
+| Label Studio | Creating human-labeled datasets and reviewing model outputs |
