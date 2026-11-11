@@ -1,0 +1,72 @@
+RAG VECTOR DATABASES
+
+QUESTION
+What is a vector database in RAG?
+
+ANSWER
+A vector database stores numerical embeddings and allows an application to search for vectors that are most similar to a user's question. In a RAG system, it stores document chunks, their embeddings, and useful metadata.
+
+WHAT A VECTOR DATABASE STORES
+
+- The original text chunk.
+- The embedding vector.
+- The document name or source URL.
+- The page number or section name.
+- Access permissions or other metadata.
+
+MAIN OPERATIONS
+
+1. Insert
+   Save a new document chunk and its vector.
+
+2. Update
+   Replace a chunk when the source document changes.
+
+3. Similarity Search
+   Find chunks whose vectors are closest to the question vector.
+
+4. Metadata Filtering
+   Restrict results by fields such as department, date, language, or user permission.
+
+5. Delete
+   Remove outdated or unauthorized documents.
+
+COMMON VECTOR DATABASES
+
+- Pinecone
+- Qdrant
+- Chroma
+- Weaviate
+- Milvus
+- pgvector for PostgreSQL
+
+VECTOR DATABASE WORKFLOW
+
+  Document chunk
+        |
+        v
+  Embedding model
+        |
+        v
+  Vector + text + metadata
+        |
+        v
+  Vector database
+        ^
+        |
+  Question embedding
+        |
+        v
+  Similarity search results
+
+VECTOR DATABASE VS NORMAL DATABASE
+
+A normal database is usually searched using exact values, keywords, or structured filters. A vector database searches by semantic meaning. This allows a question such as "How can I change my login password?" to find a document that says "Account credential reset procedure."
+
+IMPORTANT PRACTICES
+
+- Keep document IDs so records can be updated or removed.
+- Store metadata for filtering and source citations.
+- Apply access control before returning private documents.
+- Monitor index size, search latency, and storage costs.
+- Re-index documents when the chunking or embedding model changes.

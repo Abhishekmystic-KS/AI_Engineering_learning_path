@@ -1,0 +1,85 @@
+RAG ARCHITECTURE
+
+QUESTION
+What is the architecture of a RAG system?
+
+ANSWER
+A RAG system has two main stages: an indexing stage that prepares knowledge, and a query stage that retrieves knowledge and generates an answer.
+
+INDEXING STAGE
+
+1. Document Loader
+   Reads files, web pages, PDFs, databases, or other sources.
+
+2. Document Processor
+   Cleans text, removes unnecessary content, and keeps useful metadata.
+
+3. Text Chunker
+   Splits large documents into smaller pieces that can be searched effectively.
+
+4. Embedding Model
+   Converts each chunk into a numerical vector that represents its meaning.
+
+5. Vector Database
+   Stores the vectors, text chunks, and metadata for later search.
+
+QUERY STAGE
+
+1. User Question
+   The user sends a question to the RAG application.
+
+2. Query Embedding
+   The question is converted into a vector using the same or a compatible embedding model.
+
+3. Retriever
+   Searches the vector database for the most relevant chunks.
+
+4. Optional Reranker
+   Reorders the retrieved chunks to improve relevance.
+
+5. Prompt Builder
+   Places the question and retrieved context into a carefully designed prompt.
+
+6. Language Model
+   Generates an answer using the supplied context.
+
+7. Response
+   Returns the answer and, when possible, the source references.
+
+ARCHITECTURE DIAGRAM
+
+  +-------------------+
+  | Documents         |
+  +---------+---------+
+            |
+            v
+  +-------------------+       +------------------+
+  | Clean and Chunk   | ----> | Create Embeddings|
+  +-------------------+       +--------+---------+
+                                        |
+                                        v
+                              +------------------+
+                              | Vector Database  |
+                              +--------+---------+
+                                       ^
+                                       |
+  User Question --> Query Embedding --+
+                                       |
+                                       v
+                              +------------------+
+                              | Retrieve Chunks  |
+                              +--------+---------+
+                                       |
+                                       v
+                              +------------------+
+                              | Build LLM Prompt |
+                              +--------+---------+
+                                       |
+                                       v
+                              +------------------+
+                              | Generate Answer  |
+                              +------------------+
+
+KEY IDEA
+
+The vector database does not generate the answer. It finds useful information. The LLM uses that information to write the answer.

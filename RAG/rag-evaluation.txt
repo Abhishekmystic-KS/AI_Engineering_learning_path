@@ -1,0 +1,70 @@
+RAG EVALUATION
+
+QUESTION
+How do we evaluate a RAG system?
+
+ANSWER
+RAG evaluation measures whether the system retrieves the right information and uses it to produce an accurate, relevant, and grounded answer.
+
+THE TWO MAIN PARTS
+
+1. Retrieval Evaluation
+   Checks whether the correct documents were found.
+
+2. Generation Evaluation
+   Checks whether the LLM used the retrieved context correctly.
+
+RETRIEVAL METRICS
+
+- Recall: Measures whether the relevant document was retrieved at all.
+- Precision: Measures how many retrieved documents were actually relevant.
+- Hit Rate: Measures how often the correct answer appears in the retrieved results.
+- Mean Reciprocal Rank: Measures how high the first relevant result appears.
+
+GENERATION METRICS
+
+- Faithfulness: Does the answer stay supported by the retrieved context?
+- Answer Relevance: Does the answer directly address the user's question?
+- Context Relevance: Is the retrieved context useful for the question?
+- Completeness: Does the answer include the important information from the source?
+- Citation Accuracy: Do the sources actually support the claims in the answer?
+
+EVALUATION DATASET
+
+Create a test dataset containing:
+
+- A realistic user question.
+- The expected relevant document or passage.
+- An example of a correct answer.
+- Important facts that must appear in the answer.
+- Questions where the correct response is "I do not know."
+
+EVALUATION WORKFLOW
+
+1. Collect representative questions.
+2. Label the expected documents and answers.
+3. Run the RAG system on the dataset.
+4. Measure retrieval and answer quality.
+5. Inspect failures manually.
+6. Improve chunking, embeddings, retrieval, or prompts.
+7. Run the dataset again to check for regressions.
+
+WAYS TO SCORE RAG
+
+- Code-based checks for citations, required fields, and exact values.
+- LLM-as-a-judge using a clear evaluation rubric.
+- Human review for difficult or high-risk answers.
+- User feedback such as ratings and correction reports.
+
+COMMON RAG FAILURES
+
+- The correct document was never retrieved.
+- The retrieved chunk was too small or missing context.
+- The answer ignored the retrieved information.
+- The answer combined unrelated documents.
+- The source was outdated or unauthorized.
+- The system answered confidently when no useful source existed.
+
+GOOD EVALUATION RULE
+
+Do not evaluate only the final answer. Inspect the complete path: the question, retrieved chunks, ranking, prompt, generated answer, citations, latency, and token cost.

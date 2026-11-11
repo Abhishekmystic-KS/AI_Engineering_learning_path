@@ -1,0 +1,55 @@
+RAG OVERVIEW
+
+QUESTION
+What is Retrieval-Augmented Generation (RAG)?
+
+ANSWER
+Retrieval-Augmented Generation, or RAG, is a technique that gives a Large Language Model (LLM) useful information from external documents before asking it to generate an answer.
+
+Instead of relying only on knowledge learned during training, the system searches a document collection, retrieves relevant information, and adds that information to the prompt. The LLM then uses the retrieved context to create a more accurate and grounded response.
+
+WHY RAG IS USEFUL
+
+- It allows an AI system to answer questions about private documents.
+- Knowledge can be updated without retraining the LLM.
+- It can reduce hallucinations by giving the model supporting context.
+- It can provide answers based on company policies, manuals, or project files.
+
+BASIC WORKFLOW
+
+1. Load documents.
+2. Split the documents into smaller chunks.
+3. Convert the chunks into embeddings.
+4. Store the embeddings in a vector database.
+5. Convert the user's question into an embedding.
+6. Retrieve the most relevant chunks.
+7. Add the chunks to the LLM prompt.
+8. Generate a final answer based on the retrieved context.
+
+SIMPLE DIAGRAM
+
+  Documents
+      |
+      v
+  Split into chunks
+      |
+      v
+  Create embeddings
+      |
+      v
+  Vector database
+      |
+      |  User question
+      |       |
+      |       v
+      +--> Retrieve relevant chunks
+                  |
+                  v
+              LLM prompt
+                  |
+                  v
+              Final answer
+
+IMPORTANT LIMITATION
+
+RAG does not automatically make an answer correct. If the documents are incomplete, badly split, irrelevant, or retrieved incorrectly, the final answer may still be wrong. Good RAG requires quality data, retrieval, prompting, and evaluation.

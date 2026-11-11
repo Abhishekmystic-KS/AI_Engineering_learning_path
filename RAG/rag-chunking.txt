@@ -1,0 +1,59 @@
+RAG CHUNKING
+
+QUESTION
+What is chunking in RAG?
+
+ANSWER
+Chunking is the process of splitting a large document into smaller pieces called chunks. These chunks are stored and searched individually so the RAG system can retrieve only the information needed for a question.
+
+WHY CHUNKING MATTERS
+
+- Very large chunks may contain too much unrelated information.
+- Very small chunks may lose important context.
+- Good chunks improve search quality and reduce token costs.
+- Chunk size affects both retrieval accuracy and the final answer.
+
+COMMON CHUNKING METHODS
+
+1. Fixed-Size Chunking
+   Splits text after a set number of characters or tokens. It is simple but may cut a sentence or idea in the middle.
+
+2. Overlapping Chunking
+   Adds some repeated text between neighboring chunks. This helps preserve context when an important idea crosses a chunk boundary.
+
+3. Sentence Chunking
+   Splits text at sentence boundaries. This keeps complete sentences together.
+
+4. Paragraph Chunking
+   Uses paragraphs as chunks. This works well when each paragraph contains one clear idea.
+
+5. Section-Based Chunking
+   Splits documents using headings and sections. This is useful for manuals, reports, and documentation.
+
+6. Semantic Chunking
+   Groups sentences that discuss the same idea. It can produce meaningful chunks but may require more processing.
+
+GOOD CHUNKING PRACTICES
+
+- Keep related information together.
+- Preserve headings and document titles as metadata.
+- Use overlap when context may continue across boundaries.
+- Remove repeated headers, footers, and irrelevant text.
+- Test different chunk sizes using a real question dataset.
+- Keep the source page, section, and document name with every chunk.
+
+EXAMPLE
+
+Original document:
+  A long employee policy with many sections.
+
+After chunking:
+  Chunk 1: Vacation policy and eligibility.
+  Chunk 2: Sick leave rules.
+  Chunk 3: Remote work requirements.
+
+When a user asks about vacation, the system can retrieve Chunk 1 instead of sending the entire policy to the LLM.
+
+IMPORTANT BALANCE
+
+There is no single perfect chunk size. The best choice depends on the document type, question style, embedding model, and LLM context window.

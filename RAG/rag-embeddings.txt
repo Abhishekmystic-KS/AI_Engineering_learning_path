@@ -1,0 +1,56 @@
+RAG EMBEDDINGS
+
+QUESTION
+What are embeddings in RAG?
+
+ANSWER
+An embedding is a list of numbers that represents the meaning of text. Similar pieces of text are placed close together in a mathematical vector space, while unrelated pieces are placed farther apart.
+
+For example, these sentences should have similar embeddings:
+
+- How do I reset my password?
+- I forgot my password. How can I change it?
+
+The words are different, but the meaning is similar.
+
+HOW EMBEDDINGS WORK IN RAG
+
+1. A document chunk is sent to an embedding model.
+2. The model converts the chunk into a vector.
+3. The vector and original text are stored together.
+4. The user's question is converted into another vector.
+5. The system compares the question vector with document vectors.
+6. The closest vectors are returned as relevant information.
+
+VECTOR EXAMPLE
+
+  Text: "The office closes at 6 PM."
+  Embedding: [0.12, -0.44, 0.81, 0.33, ...]
+
+The numbers are not meant to be read by humans. They are used for mathematical similarity searches.
+
+SIMILARITY SEARCH
+
+RAG systems commonly compare vectors using:
+
+- Cosine similarity
+- Dot product
+- Euclidean distance
+
+The exact method depends on the embedding model and vector database.
+
+EMBEDDING MODELS
+
+Embedding models can be hosted services or open-source models. Examples include models from OpenAI, Cohere, Hugging Face, and Sentence Transformers.
+
+IMPORTANT PRACTICES
+
+- Use the same embedding space for documents and user questions.
+- Choose a model that supports the language and domain of your data.
+- Do not change the embedding model without re-indexing existing documents.
+- Test retrieval quality with real user questions.
+- Store the original text next to each vector so it can be sent to the LLM.
+
+LIMITATION
+
+Embeddings represent meaning, but they do not understand truth. A wrong or outdated document can still receive a strong similarity score. Retrieval results must be checked and evaluated.

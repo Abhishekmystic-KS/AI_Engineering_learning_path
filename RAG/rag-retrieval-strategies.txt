@@ -1,0 +1,69 @@
+RAG RETRIEVAL STRATEGIES
+
+QUESTION
+How does a RAG system retrieve useful information?
+
+ANSWER
+Retrieval is the process of finding the most useful document chunks for a user's question. Good retrieval is important because the LLM can only give a well-grounded answer when it receives the right context.
+
+1. Dense Vector Search
+
+Dense search converts the question and documents into embeddings, then finds chunks with similar meaning. It works well when the question and document use different words with the same meaning.
+
+2. Keyword Search
+
+Keyword search looks for exact words or phrases. It is useful for names, product IDs, error codes, and technical terms. BM25 is a common keyword search method.
+
+3. Hybrid Search
+
+Hybrid search combines dense vector search with keyword search. It can understand meaning while also preserving important exact terms.
+
+4. Metadata Filtering
+
+The system filters results before or during search. Examples include:
+
+- Only search documents from the Finance department.
+- Only search documents created after a specific date.
+- Only return documents the current user is allowed to see.
+
+5. Query Rewriting
+
+The system rewrites a vague or conversational question into a clearer search query. This is useful when the user's question depends on earlier conversation context.
+
+6. Multi-Query Retrieval
+
+The system creates several related queries, searches each one, and combines the results. This can improve recall when one wording does not find all relevant documents.
+
+7. Reranking
+
+A reranker examines the first group of retrieved chunks and places the most useful ones at the top. This improves the quality of the context sent to the LLM.
+
+RETRIEVAL WORKFLOW
+
+  User question
+       |
+       v
+  Rewrite or expand query
+       |
+       v
+  Dense search + keyword search
+       |
+       v
+  Apply metadata permissions
+       |
+       v
+  Rerank results
+       |
+       v
+  Send best chunks to the LLM
+
+IMPORTANT RETRIEVAL SETTINGS
+
+- Top-k: The number of chunks returned.
+- Similarity threshold: The minimum relevance score allowed.
+- Metadata filters: Rules that limit which documents can be returned.
+- Reranker: A model or algorithm that improves result ordering.
+
+COMMON FAILURE
+
+Returning more chunks does not always improve the answer. Too much irrelevant context can confuse the LLM, increase cost, and reduce accuracy. Retrieval should return a small set of highly relevant and authorized chunks.
