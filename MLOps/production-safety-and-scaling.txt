@@ -1,0 +1,66 @@
+PRODUCTION SAFETY AND SCALING
+
+QUESTION
+How do we keep hosted AI systems safe, reliable, and scalable?
+
+ANSWER
+A production AI system needs controls for security, reliability, capacity, and cost. A model that works in a notebook is not automatically ready for real users.
+
+SECURITY
+
+- Store API keys in a secret manager, never in source code.
+- Authenticate users and authorize access to data and tools.
+- Apply rate limits to users, tools, and model providers.
+- Validate all inputs and tool arguments.
+- Protect against prompt injection and unsafe tool calls.
+- Remove or mask private information from logs.
+- Use network and database permissions with least privilege.
+
+RELIABILITY
+
+- Set timeouts for every external request.
+- Retry temporary failures with a maximum retry count.
+- Use queues for long-running work.
+- Make jobs idempotent so retries do not duplicate harmful actions.
+- Save agent state so work can resume safely.
+- Create health checks and readiness checks.
+- Keep backups and a rollback version.
+
+SCALING
+
+- Add more service instances when traffic increases.
+- Use a queue to control bursts of work.
+- Batch embedding and inference requests where possible.
+- Cache repeated results and embeddings.
+- Use GPU serving for large models when needed.
+- Separate the API, worker, database, and model services.
+- Set maximum concurrency to protect model providers and databases.
+
+COST CONTROL
+
+- Track input and output tokens.
+- Set per-user and per-task budgets.
+- Limit agent loop count and tool calls.
+- Use smaller models for simple tasks.
+- Cache stable responses.
+- Shut down unused development resources.
+- Alert when spending rises unexpectedly.
+
+AI-SPECIFIC PRODUCTION RISKS
+
+- Data drift: real input data changes from training data.
+- Model drift: model quality decreases over time.
+- Prompt drift: prompts or tools change and affect behavior.
+- Hallucination: the system gives unsupported information.
+- Tool misuse: the agent performs an unintended action.
+- Runaway loops: the agent repeats steps and creates high cost.
+
+PRODUCTION CHECKLIST
+
+- Is the service authenticated?
+- Are secrets protected?
+- Are errors, latency, cost, and quality monitored?
+- Is there a maximum timeout and loop count?
+- Can the previous version be restored?
+- Are user inputs and model outputs evaluated?
+- Is there a human approval step for high-risk actions?

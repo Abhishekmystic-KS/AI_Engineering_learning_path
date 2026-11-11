@@ -1,0 +1,78 @@
+MLOPS DEPLOYMENT PIPELINE
+
+QUESTION
+How does an AI application move from development to production?
+
+ANSWER
+A deployment pipeline automates the process of testing, packaging, releasing, and monitoring an AI application.
+
+PIPELINE STAGES
+
+1. Code Change
+   A developer updates model, agent, API, prompt, or configuration code.
+
+2. Version Control
+   The change is committed to Git and reviewed through a pull request.
+
+3. Automated Tests
+   Unit tests, API tests, tool tests, security checks, and evaluation tests run automatically.
+
+4. Build
+   Dependencies and application code are packaged into a Docker image or deployment artifact.
+
+5. Evaluation Gate
+   The model or agent is checked against a golden dataset. The release stops if quality, safety, or cost becomes worse than the allowed limit.
+
+6. Staging Deployment
+   The new version is deployed to a test environment that looks like production.
+
+7. Production Release
+   The version is released to users using a controlled rollout.
+
+8. Monitoring
+   Logs, metrics, traces, user feedback, model quality, and cost are monitored.
+
+9. Rollback or Improvement
+   The team returns to the previous version if serious problems occur, or improves the system and starts another cycle.
+
+PIPELINE DIAGRAM
+
+  Code change
+       |
+       v
+  Git review
+       |
+       v
+  Tests and evaluations
+       |
+       v
+  Build Docker image
+       |
+       v
+  Deploy to staging
+       |
+       v
+  Quality and safety check
+       |
+       v
+  Deploy to production
+       |
+       v
+  Monitor and improve
+
+COMMON TOOLS
+
+- Git and GitHub for version control.
+- GitHub Actions or GitLab CI for automation.
+- Docker for packaging.
+- MLflow for model versions.
+- DVC for dataset versions.
+- Kubernetes or cloud services for deployment.
+- Prometheus, Grafana, Langfuse, or LangSmith for monitoring.
+
+SAFE RELEASE METHODS
+
+- Rolling deployment: Replace old instances gradually.
+- Blue-green deployment: Keep old and new environments and switch traffic between them.
+- Canary deployment: Send a small percentage of traffic to the new version first.
+- A/B testing: Compare two versions using defined quality metrics.

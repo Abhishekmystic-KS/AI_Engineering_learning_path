@@ -1,0 +1,38 @@
+MLOPS OVERVIEW
+
+QUESTION
+What is MLOps?
+
+ANSWER
+MLOps is the set of practices used to take a machine-learning model or AI agent from development into a reliable production system.
+
+It combines machine learning, software engineering, data engineering, deployment, monitoring, and security.
+
+WHAT MLOPS MANAGES
+
+- Data and dataset versions
+- Model training and experiments
+- Agent and model evaluation
+- API deployment
+- Infrastructure and dependencies
+- Logs, metrics, and traces
+- Model quality and data drift
+- Security, cost, and access control
+- Updates, rollback, and maintenance
+
+PRODUCTION LIFECYCLE
+
+1. Develop the model or agent.
+2. Test tools, prompts, code, and data.
+3. Evaluate accuracy, safety, and cost.
+4. Package the application and dependencies.
+5. Deploy it as an API, worker, or application.
+6. Monitor technical and AI behavior.
+7. Detect failures, drift, or rising costs.
+8. Improve, test, and deploy a new version.
+
+WHY MONITORING IS NEEDED
+
+A normal application can fail when its code breaks. An AI application can also fail while its code is working correctly. It may produce a poor answer, call the wrong tool, become slow, use too many tokens, or receive changed data.
+
+MLOps makes these problems visible and gives the team a process to fix them.

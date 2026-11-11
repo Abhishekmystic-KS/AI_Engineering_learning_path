@@ -1,0 +1,68 @@
+LOGS, METRICS, AND TRACES
+
+QUESTION
+What is the difference between logs, metrics, and traces?
+
+ANSWER
+Logs, metrics, and traces are three types of observability data. Together they explain what happened, how often it happens, and where the time or failure occurred.
+
+1. LOGS
+
+Logs are timestamped records of events.
+
+Examples:
+
+- User request received.
+- Tool call started.
+- Database connection failed.
+- Agent completed task.
+- Model returned an invalid response.
+
+A useful log should include a request ID, user or tenant ID when appropriate, model name, tool name, status, and duration. Never log passwords, API keys, or private user data unnecessarily.
+
+2. METRICS
+
+Metrics are numerical measurements collected over time.
+
+Examples:
+
+- Request count
+- Error rate
+- Average latency
+- CPU and memory usage
+- Token count
+- Cost per task
+- Average loop count
+- Task success rate
+
+Metrics are useful for dashboards and alerts.
+
+3. TRACES
+
+A trace follows one request through multiple services and agent steps. It can show the full path from the user request to the model call, tool call, database query, observation, and final answer.
+
+AGENT TRACE EXAMPLE
+
+  Request ID: 123
+      |
+      +-- Agent step 1: plan, 1.2 seconds
+      |       +-- LLM call, 800 input tokens
+      |       +-- Search tool, 0.6 seconds
+      |
+      +-- Agent step 2: answer, 2.1 seconds
+              +-- LLM call, 1,200 input tokens
+              +-- Final response
+
+TOOLS
+
+- OpenTelemetry: Standard format for traces and metrics.
+- Prometheus: Collects numerical metrics.
+- Grafana: Displays dashboards and alerts.
+- Sentry: Captures errors and exceptions.
+- LangSmith: Traces LangChain and LangGraph applications.
+- Langfuse: Tracks LLM prompts, costs, and sessions.
+- Arize Phoenix: Traces and evaluates LLM applications.
+
+PRODUCTION RULE
+
+Use logs to investigate an event, metrics to see trends, and traces to understand the complete path of one request.

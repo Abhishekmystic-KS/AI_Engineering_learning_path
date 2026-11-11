@@ -1,0 +1,69 @@
+MONITORING AND OBSERVABILITY
+
+QUESTION
+How do we monitor an AI model or agent after hosting it?
+
+ANSWER
+Monitoring continuously collects information about the production system so the team can detect failures, poor quality, slow responses, security problems, and unexpected costs.
+
+FOUR MONITORING AREAS
+
+1. System Health
+   Is the service running and responding?
+
+2. Performance
+   Is it fast enough and handling the current traffic?
+
+3. AI Quality
+   Are the model or agent answers useful, accurate, and grounded?
+
+4. Cost and Safety
+   Is the service using reasonable resources and following security rules?
+
+WHAT TO MONITOR
+
+| Area | Important Signals |
+|---|---|
+| Availability | Uptime, health checks, failed requests |
+| Latency | Time to first token, total response time, queue wait time |
+| Traffic | Requests per minute, active users, concurrent jobs |
+| Errors | HTTP errors, tool failures, model timeouts, worker crashes |
+| Model Quality | Accuracy, relevance, groundedness, hallucination rate |
+| Agent Behavior | Loop count, tool-call errors, fallback rate, task success |
+| RAG Quality | Retrieval recall, context relevance, citation accuracy |
+| Resources | CPU, memory, GPU usage, storage, queue size |
+| Cost | Input tokens, output tokens, API cost, cost per task |
+| Safety | Prompt injections, blocked requests, PII detections |
+
+MONITORING LOOP
+
+  Collect data
+       |
+       v
+  Store logs, metrics, and traces
+       |
+       v
+  Create dashboards
+       |
+       v
+  Set alert thresholds
+       |
+       v
+  Investigate failures
+       |
+       v
+  Fix, test, and redeploy
+
+ALERT EXAMPLES
+
+- Error rate is higher than 5 percent.
+- Response latency is above 10 seconds.
+- The queue contains too many waiting jobs.
+- Token cost per task increases suddenly.
+- The agent exceeds the allowed loop count.
+- Retrieval quality falls below the target score.
+- A model produces too many unsafe or unsupported answers.
+
+TOOLS
+
+Prometheus and Grafana monitor infrastructure metrics. Sentry captures errors. LangSmith, Langfuse, and Arize Phoenix trace LLM and agent behavior. Cloud platforms also provide logs, dashboards, alerts, and service health checks.

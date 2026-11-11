@@ -1,0 +1,70 @@
+MODEL AND AGENT SERVING
+
+QUESTION
+How is an AI model or agent hosted for users?
+
+ANSWER
+A model or agent is usually packaged as a service that receives a request and returns a response. The service is commonly exposed through an HTTP API.
+
+COMMON SERVING TYPES
+
+1. REST API
+   A client sends JSON to an endpoint such as /predict or /chat and receives a JSON response.
+
+2. Streaming API
+   The service sends partial text or events as they are generated. This is useful for chat applications and long agent tasks.
+
+3. Background Worker
+   The API accepts a task, returns a job ID, and a separate worker completes the long-running model or agent task.
+
+4. Batch Inference
+   The system processes many records together, such as creating embeddings for a document collection.
+
+5. Scheduled Inference
+   A job runs at a fixed time, such as generating a daily report or refreshing predictions.
+
+BASIC PRODUCTION ARCHITECTURE
+
+  User or Application
+          |
+          v
+  API Gateway and Authentication
+          |
+          +--> Fast request: return response
+          |
+          +--> Long request: create job ID
+                          |
+                          v
+                    Task Queue
+                          |
+                          v
+                    Worker Service
+                          |
+                          v
+                    Model or Agent
+                          |
+                          v
+                    Database and Logs
+
+WHAT THE SERVICE NEEDS
+
+- Model or agent code
+- Model weights or API connection
+- Dependency versions
+- Environment configuration
+- Secure secrets
+- Input validation
+- Authentication and authorization
+- Timeouts and retry rules
+- Logging and monitoring
+- Health and readiness endpoints
+
+HEALTH ENDPOINTS
+
+- /health: Confirms that the service is running.
+- /ready: Confirms that the service can accept traffic and reach required dependencies.
+- /metrics: Exposes measurements for monitoring systems.
+
+IMPORTANT RULE
+
+Do not place a long-running agent loop inside a short HTTP request without a timeout and job-management strategy. Use a queue and worker when the task may take a long time.
